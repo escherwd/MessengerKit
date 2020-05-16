@@ -120,7 +120,7 @@ open class MSGMessengerViewController: UIViewController {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     open override func loadView() {
@@ -219,18 +219,18 @@ open class MSGMessengerViewController: UIViewController {
         if users.count == 1 {
             attributedText = NSMutableAttributedString(string: users[0].displayName, attributes: [
                 .font: UIFont.systemFont(ofSize: 14, weight: .bold),
-                .foregroundColor: UIColor.darkText
+                .foregroundColor: UIColor.darkGray
             ])
         } else {
             attributedText = NSMutableAttributedString(string: "\(users.count) people", attributes: [
                 .font: UIFont.systemFont(ofSize: 14, weight: .bold),
-                .foregroundColor: UIColor.darkText
+                .foregroundColor: UIColor.darkGray
             ])
         }
         
         attributedText.append(NSAttributedString(string: users.count == 1 ? " is typing…" : " typing…", attributes: [
             .font: UIFont.systemFont(ofSize: 14, weight: .medium),
-            .foregroundColor: UIColor.black
+            .foregroundColor: UIColor.darkGray
         ]))
         
         

@@ -17,7 +17,7 @@ open class MSGTravCollectionViewCell: MSGMessageCell {
     override open var message: MSGMessage? {
         didSet {
             guard let message = message,
-                case let MSGMessageBody.text(body) = message.body else { return }
+                case let MSGMessageBody.text(body,_) = message.body else { return }
             
             bubble.text = body
         }

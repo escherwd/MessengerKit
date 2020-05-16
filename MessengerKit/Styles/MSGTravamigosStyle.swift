@@ -21,8 +21,6 @@ public struct MSGTravamigosStyle: MSGMessengerStyle {
     
     public var inputViewBackgroundColor: UIColor = .white
     
-    public var inputTextViewBackgroundColor : UIColor = .white
-    
     public var font: UIFont = .systemFont(ofSize: 14, weight: .bold)
     
     public var inputFont: UIFont = .systemFont(ofSize: 14, weight: .bold)
@@ -49,7 +47,7 @@ public struct MSGTravamigosStyle: MSGMessengerStyle {
         case .text(let body):
             
             let bubble = MSGTravOutgoingBubble()
-            bubble.text = body
+            bubble.text = body.0
             bubble.font = font
             let bubbleSize = bubble.calculatedSize(in: CGSize(width: collectionView.bounds.width, height: .infinity))
             size = CGSize(width: collectionView.bounds.width, height: bubbleSize.height)

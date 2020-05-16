@@ -21,8 +21,6 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
     
     public var inputViewBackgroundColor: UIColor = .white
     
-    public var inputTextViewBackgroundColor : UIColor = .white
-    
     public var font: UIFont = .preferredFont(forTextStyle: .body)
     
     public var inputFont: UIFont = .systemFont(ofSize: 14)
@@ -39,7 +37,7 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
     
     public var outgoingLinkColor: UIColor = .white
     
-    public var incomingLinkColor: UIColor = UIColor(hue:0.58, saturation:0.81, brightness:0.95, alpha:1.00)
+    public var incomingLinkColor: UIColor = UIColor(red:0.33, green:0.44, blue:1.00, alpha:1.00)//UIColor(hue:0.58, saturation:0.81, brightness:0.95, alpha:1.00)
     
     public func size(for message: MSGMessage, in collectionView: UICollectionView) -> CGSize {
         
@@ -49,7 +47,7 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
         case .text(let body):
             
             let bubble = MSGTailOutgoingBubble()
-            bubble.text = body
+            bubble.text = body.0
             bubble.font = font
             let bubbleSize = bubble.calculatedSize(in: CGSize(width: collectionView.bounds.width, height: .infinity))
             size = CGSize(width: collectionView.bounds.width, height: bubbleSize.height)
@@ -61,6 +59,18 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
             size = CGSize(width: collectionView.bounds.width, height: 60)
             
             break
+            
+        case .image:
+            
+            size = CGSize(width: collectionView.bounds.width, height: 120)
+            
+            break
+            
+        case .custom:
+            
+            size = CGSize(width: collectionView.bounds.width, height: 44)
+            
+            break;
             
         default:
             

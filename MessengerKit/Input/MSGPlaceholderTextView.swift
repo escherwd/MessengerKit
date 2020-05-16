@@ -14,7 +14,7 @@ import UIKit
 open class MSGPlaceholderTextView: UIView {
     
     /// The actual text view being used
-    private let textView = UITextView()
+    public let textView = UITextView()
     
     /// The label used for the placeholder
     private let label = UILabel()

@@ -48,9 +48,6 @@ public protocol MSGMessengerStyle {
     /// The color of text used by the placeholder in input view
     var inputPlaceholderTextColor: UIColor { get }
     
-    // The color of the textview in the input view
-    var inputTextViewBackgroundColor : UIColor { get }
-    
     /// The text color of outgoing messages
     var outgoingTextColor: UIColor { get }
     

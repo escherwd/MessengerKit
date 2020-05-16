@@ -82,12 +82,12 @@ open class MSGCollectionView: UICollectionView {
         
         let attributedText = NSMutableAttributedString(string: "2 people ", attributes: [
             .font: UIFont.systemFont(ofSize: 14, weight: .bold),
-            .foregroundColor: UIColor.darkText
+            .foregroundColor: UIColor.darkGray
         ])
 
         attributedText.append(NSAttributedString(string: "typing…", attributes: [
             .font: UIFont.systemFont(ofSize: 14, weight: .medium),
-            .foregroundColor: UIColor.darkText
+            .foregroundColor: UIColor.darkGray
         ]))
 
         typingLabel = UILabel()

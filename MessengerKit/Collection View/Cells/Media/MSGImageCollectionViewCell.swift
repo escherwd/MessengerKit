@@ -12,6 +12,11 @@ class MSGImageCollectionViewCell: MSGMessageCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var cardTitle: UILabel!
+    @IBOutlet var cardSubtitle: UILabel!
+    
+    @IBOutlet var cardTitleBG: UIView!
+    @IBOutlet var cardTitleSecondaryBG: UIView!
     
     override public var message: MSGMessage? {
         didSet {
@@ -20,9 +25,12 @@ class MSGImageCollectionViewCell: MSGMessageCell {
                 return
             }
             
-            if case let MSGMessageBody.image(image) = message.body {
+            if case let MSGMessageBody.image(image,_) = message.body {
                 imageView.image = image
-            } else if case let MSGMessageBody.imageFromUrl(imageUrl) = message.body {
+                cardTitle.text = (image.accessibilityIdentifier ?? "" == "story") ? "Story" : "Image"
+                
+                
+            } else if case let MSGMessageBody.imageFromUrl(imageUrl,_) = message.body {
                 self.downloadImage(from: imageUrl)
             }
             
@@ -48,9 +56,21 @@ class MSGImageCollectionViewCell: MSGMessageCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.layer.cornerRadius = 18
+        imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = true   
+        imageView.isUserInteractionEnabled = true
+        
+        
+    }
+    
+    override func layoutSubviews() {
+        cardTitle.textColor = (message?.user.isSender ?? false) ? .white : .black
+        cardSubtitle.textColor = (message?.user.isSender ?? false) ? UIColor.white.withAlphaComponent(0.5) : UIColor.black.withAlphaComponent(0.5)
+        if let s = self.style as? MSGIMessageStyle {
+            let color = (message?.user.isSender ?? false) ? s.outgoingBubbleColor : .white
+            cardTitleBG.backgroundColor = color
+            cardTitleSecondaryBG.backgroundColor = color
+        }
     }
 
 }

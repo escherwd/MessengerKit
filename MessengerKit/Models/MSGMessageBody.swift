@@ -17,33 +17,12 @@ import UIKit
 /// - custom: Not used by any of the included templates by default but it can be in a custom cell or style. The body can be any object required.
 public enum MSGMessageBody {
     
-    case text(String)
-    case emoji(String)
-    case image(UIImage)
-    case imageFromUrl(URL)
-    case video(UIImage, String)
+    case text(String, Any?)
+    case emoji(String, Any?)
+    case image(UIImage, Any?)
+    case imageFromUrl(URL, Any?)
+    case video(UIImage, String, Any?)
     case custom(Any)
-
-	/// Return the raw value representation from MSGMessageBody. it could be String, Image, URL or Custom object.
-	public var rawValue: Any {
-		switch self {
-		case .text(let text):
-			return text
-		
-		case .emoji(let emoji):
-			return emoji
-		
-		case .image(let image):
-			return image
-		
-		case .imageFromUrl(let imageUrl):
-			return imageUrl
-		
-		case .video(_, let video):
-			return video
-		
-		case .custom(let value):
-			return value
-		}
-	}
+    
+    
 }
