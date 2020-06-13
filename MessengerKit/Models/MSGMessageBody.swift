@@ -11,6 +11,7 @@ import UIKit
 /// The body of an `MSGMessage`
 ///
 /// - text: A message that is exclusively text.
+/// - system: A system message, no user displayed.
 /// - emoji: Use when a message is emoji only to display larger on the display.
 /// - image: An image. Provide a URL.
 /// - video: A video. Provide a thumb and a URL.
@@ -18,6 +19,7 @@ import UIKit
 public enum MSGMessageBody {
     
     case text(String, Any?)
+    case system(String, Any?)
     case emoji(String, Any?)
     case image(UIImage, Any?)
     case imageFromUrl(URL, Any?)

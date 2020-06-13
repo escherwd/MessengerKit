@@ -46,7 +46,17 @@ extension MSGMessengerViewController: UICollectionViewDataSource, UICollectionVi
             }
             
             return cell
-            
+        
+        case .system:
+           let identifier = "system"
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! MSGMessageCell
+           
+           cell.delegate = self
+           cell.message = message
+           cell.style = style
+           cell.isLastInSection = isLast
+           
+           return cell
             
         case .emoji:
             
@@ -190,7 +200,11 @@ extension MSGMessengerViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        guard style.headerHeight > 0 else {
+        //Get the text that will be displayed here
+        let title = dataSource?.headerTitle(for: section)
+        
+        //Will hide the header if no text is given
+        guard style.headerHeight > 0 && (title?.count ?? 0) > 0 else {
             return .zero
         }
         

@@ -22,6 +22,11 @@ open class MSGImessageCollectionView: MSGCollectionView {
         register(UINib(nibName: "MSGIncomingTailCollectionViewCell", bundle: MessengerKit.bundle),
                  forCellWithReuseIdentifier: "incomingText")
         
+        // System
+        
+        register(UINib(nibName: "MSGSystemCollectionViewCell", bundle: MessengerKit.bundle),
+                 forCellWithReuseIdentifier: "system")
+        
         // Emoji
         
         register(UINib(nibName: "MSGOutgoingEmojiCollectionViewCell", bundle: MessengerKit.bundle),

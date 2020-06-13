@@ -53,6 +53,10 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
             size = CGSize(width: collectionView.bounds.width, height: bubbleSize.height)
             
             break
+        
+        case .system:
+            
+            size = CGSize(width: collectionView.bounds.width, height: 32)
             
         case .emoji:
             
@@ -108,4 +112,12 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
     /// The text color used by footer views
     public var footerTextColor: UIColor = UIColor(hue:0.67, saturation:0.03, brightness:0.58, alpha:1.00)
     
+    /// The font used by system messages
+    public var systemMessageFont: UIFont = UIFont.systemFont(ofSize: 13)
+    
+    /// The background color of system messages
+    public var systemMessageBackgroundColor: UIColor = UIColor.white.withAlphaComponent(0.05)
+    
+    /// The text color of system messages
+    public var systemMessageTextColor: UIColor = UIColor.white.withAlphaComponent(0.8)
 }
